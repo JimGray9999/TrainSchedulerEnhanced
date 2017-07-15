@@ -5,7 +5,7 @@ $(document).ready(function() {
         authDomain: "train-scheduler-2-4ee4d.firebaseapp.com",
         databaseURL: "https://train-scheduler-2-4ee4d.firebaseio.com",
         projectId: "train-scheduler-2-4ee4d",
-        storageBucket: "",
+        storageBucket: "train-scheduler-2-4ee4d.appspot.com",
         messagingSenderId: "92242130272"
     };
     firebase.initializeApp(config);
