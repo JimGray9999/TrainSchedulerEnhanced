@@ -1,12 +1,12 @@
 $(document).ready(function() {
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyA_btVeabqa-okXDtYE9Q6_pE0YaYCN0I8",
-        authDomain: "train-scheduler-38085.firebaseapp.com",
-        databaseURL: "https://train-scheduler-38085.firebaseio.com",
-        projectId: "train-scheduler-38085",
-        storageBucket: "train-scheduler-38085.appspot.com",
-        messagingSenderId: "914799628028"
+        apiKey: "AIzaSyDPuOwzp_uLVa0oLZ5OpgwjMBtbREv74wE",
+        authDomain: "train-scheduler-2-4ee4d.firebaseapp.com",
+        databaseURL: "https://train-scheduler-2-4ee4d.firebaseio.com",
+        projectId: "train-scheduler-2-4ee4d",
+        storageBucket: "",
+        messagingSenderId: "92242130272"
     };
     firebase.initializeApp(config);
 
@@ -18,7 +18,44 @@ $(document).ready(function() {
 
     console.log(dbRefSchedule);
 
-    //TODO developer: have the time update as it changes realtime
+    //Sign In on Modal Button Click
+    $("#btnLog").on("click", function() {
+
+        var auth = firebase.auth();
+
+        var email = $("#email").val();
+        var pwd = $("#password").val();
+        
+        var promise = auth.signInWithEmailAndPassword(email, pwd);
+
+        //TODO: developer - show that login was successful or failed
+        // if successful, have the modal disappear
+        // display train schedule (remove .hide class)
+        $("#train-schedule").removeClass(".hide");
+        });
+
+    $("#btnSign").on("click", function(){
+        var auth = firebase.auth();
+
+        var newEmail = $("#email").val();
+        var newPwd = $("#password").val();
+
+        var promise = auth.createUserWithEmailAndPassword(email, pwd);
+
+        //TODO: developer - show that user creation was successful
+        });
+
+    // sign current user out
+    $("#btnOut").on("click", function(){
+        firebase.auth().signOut();
+
+        // show sign out successful
+
+        // hide all trains in schedule
+        $("#train-schedule").addClass(".hide");
+        });
+
+    //TODO developer: have the time update each minute
     var now24hr = moment().format("HH:mm");
     var now12hr = moment().format("[or simply] LT");
     $("#current-time").html("The Current time is: " + now24hr + " (" + now12hr + ")");

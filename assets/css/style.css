@@ -26,3 +26,7 @@ tr:nth-child(even) {
 .outOfTime {
     color: red;
 }
+
+.hide {
+    visibility: hidden;
+}
